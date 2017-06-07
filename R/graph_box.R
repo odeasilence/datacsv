@@ -1,11 +1,11 @@
 #' graph_box
-#' 
+#'
 #' This is a function that will generate a box graph containing a specified column from each csv file in the folder.
 #' @param folder Input folder path
 #' @param colname Input the name of the column wanted to extract
 #' @export
 graph_box <- function(folder,colname){
-  setwd(folder)  
+  setwd(folder)
   filename <- list.files(pattern = "*.csv")
   column <- 0
   for (i in 1: length(filename)) {
