@@ -1,4 +1,4 @@
-This package require the following library:
+This package requires the following library:
 plyr
 dplyr
 tools
