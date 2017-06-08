@@ -1,0 +1,6 @@
+This package require the following library:
+plyr
+dplyr
+tools
+ggplot2
+
