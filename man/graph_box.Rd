@@ -4,12 +4,13 @@
 \alias{graph_box}
 \title{graph_box}
 \usage{
-graph_box(folder, colname)
+graph_box(folder, colname, vec)
 }
 \arguments{
 \item{folder}{Input folder path}
 
 \item{colname}{Input the name of the column wanted to extract}
+\item{vec}{if a vector will be generated}
 }
 \description{
 This is a function that will generate a box graph containing a specified column from each csv file in the folder.

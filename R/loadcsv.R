@@ -10,23 +10,26 @@
 #'@export
 loadcsv <- function(folder,individual=FALSE){
   setwd(folder)
-  temp <<- list.files(pattern = "*.csv")
+  filenames <<- list.files(pattern = "*.csv")
   if(individual==TRUE){
-  for (i in 1: length(temp)) {
-    assign(temp[i], read.csv(temp[i]),envir = globalenv())
+  for (i in 1: length(filenames)) {
+    assign(file_path_sans_ext(filenames[i]), read.csv(filenames[i]),envir = globalenv())
   }
   #generate individuaOl data frames
   }
   if(individual==FALSE){
   read_csv_filename <- function(filename){
     ret <- read.csv(filename)
-    ret$Source <- filename
+    ret$Source <- file_path_sans_ext(filename)
     ret
   }
-  import.list <- ldply(temp, read_csv_filename)
+  import.list <- ldply(filenames, read_csv_filename)
   Result <<- do.call("rbind",import.list) %>%
     t() %>%
     as.data.frame()
   #generate single data frame
+  Result[,1:length(filenames)] <<- as.numeric(as.character(unlist(Result[,1:length(temp)])))
+  Result$Source <<- as.character((unlist(Result$Source)))
+  return(Result)
   }
 }
